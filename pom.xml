@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+  <groupId>edu.hadil</groupId>
+  <artifactId>tp1-p2-analyse-statique</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+
+  <properties>
+    <maven.compiler.release>11</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jdt.version>3.32.0</jdt.version> 
+  </properties>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>org.eclipse.jdt</groupId>
+      <artifactId>org.eclipse.jdt.core</artifactId>
+      <version>${jdt.version}</version>
+    </dependency>
+<dependency>
+    <groupId>com.formdev</groupId>
+    <artifactId>flatlaf</artifactId>
+    <version>3.4</version>
+</dependency>
+
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.15.1</version>
+    </dependency>
+  
+<dependency>
+  <groupId>org.graphstream</groupId>
+  <artifactId>gs-core</artifactId>
+  <version>2.0</version>
+</dependency>
+
+
+    <dependency>
+    
+	  <groupId>org.graphstream</groupId>
+	  <artifactId>gs-core</artifactId>
+	  <version>2.0</version>
+  </dependency>
+
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.10.2</version>
+      <scope>test</scope>
+    </dependency>
+<dependency>
+  <groupId>org.graphstream</groupId>
+  <artifactId>gs-ui-swing</artifactId>
+  <version>2.0</version>
+</dependency>
+
+    <!-- Eclipse JDT pour l’analyse AST -->
+    <dependency>
+        <groupId>org.eclipse.jdt</groupId>
+        <artifactId>org.eclipse.jdt.core</artifactId>
+        <version>3.32.0</version>
+    </dependency>
+
+    <!-- GraphStream pour le graphe -->
+    <dependency>
+        <groupId>org.graphstream</groupId>
+        <artifactId>gs-core</artifactId>
+        <version>2.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.graphstream</groupId>
+        <artifactId>gs-ui-swing</artifactId>
+        <version>2.0</version>
+    </dependency>
+
+    <!-- JavaFX (si ton Eclipse ne l’inclut pas déjà) -->
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-controls</artifactId>
+        <version>11.0.2</version>
+    </dependency>
+
+
+  </dependencies>
+
+  <build>
+    <plugins>
+ 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <release>${maven.compiler.release}</release>
+        </configuration>
+      </plugin>
+ 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>
