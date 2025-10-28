@@ -1,7 +1,10 @@
-// parser/Parser.java
 package parser;
 import org.eclipse.jdt.core.dom.*;
-import java.nio.file.*; import java.io.*; import java.util.*;
+import org.eclipse.jdt.core.JavaCore;
+import java.nio.file.*;
+import java.io.*;
+import java.util.*;
+import java.util.Map;
 
 public class Parser {
   public static List<Path> listJava(Path root) throws IOException {
@@ -9,11 +12,17 @@ public class Parser {
     try (var s = Files.walk(root)) { s.filter(p->p.toString().endsWith(".java")).forEach(out::add); }
     return out;
   }
-  public static CompilationUnit parse(String src) {
+
+  // nouveau: parser avec bindings activés
+  public static CompilationUnit parse(String src, Path srcRoot) {
     ASTParser p = ASTParser.newParser(AST.JLS11);
     p.setKind(ASTParser.K_COMPILATION_UNIT);
+    p.setResolveBindings(true);
+    p.setBindingsRecovery(true);
+    p.setCompilerOptions(JavaCore.getOptions());
+    p.setEnvironment(new String[0], new String[]{ srcRoot.toString() }, new String[]{"UTF-8"}, true);
+    p.setUnitName("Dummy.java");
     p.setSource(src.toCharArray());
-    p.setBindingsRecovery(false); p.setResolveBindings(false);
     return (CompilationUnit) p.createAST(null);
   }
 }

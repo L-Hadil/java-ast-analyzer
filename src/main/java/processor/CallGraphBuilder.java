@@ -16,7 +16,8 @@ public class CallGraphBuilder {
 
         for (Path p : Parser.listJava(srcPath)) {
             String code = Files.readString(p, StandardCharsets.UTF_8);
-            CompilationUnit cu = Parser.parse(code);
+            CompilationUnit cu = Parser.parse(code, srcPath);
+
 
             // Pour chaque classe
             cu.accept(new ASTVisitor() {
